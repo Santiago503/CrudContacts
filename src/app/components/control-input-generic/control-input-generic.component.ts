@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { maskCedula, maskPhoneRD } from 'src/app/helper/mask';
+import { FormArray, FormGroup } from '@angular/forms';
+import {  maskPhoneRD } from 'src/app/helper/mask';
 import { InputGeneric } from './model/InputGeneric';
 
 @Component({
@@ -19,7 +19,6 @@ export class ControlInputGenericComponent implements OnInit {
     'matSlideToggle'
   ]
   maskPhoneRD = maskPhoneRD;
-  maskCedula  = maskCedula;
   @Input() inputGeneric : InputGeneric[] = [];
 
   @Input() formGroup: any;
@@ -73,7 +72,12 @@ export class ControlInputGenericComponent implements OnInit {
 
   get fields() {  return this.formGroup;  }
 
-  getKeydown(input:any, event:Event) {
+  get getFormArray() {
+    return this.formGroup.get(this.formArrayName) as FormArray;
+  }
+
+  getKeydown(input:any, event:Event, index: number | null = null) {
+
     //input must be typeMethor  Key
     if(
       (input?.label?.toLowerCase().includes('telefono')
@@ -81,9 +85,11 @@ export class ControlInputGenericComponent implements OnInit {
       || input?.label?.toLowerCase().includes('celular'))
       && input?.typeMethor?.includes('key')){
 
-      maskPhoneRD(event, input?.formControlName, this.fields);
-    }else if(input?.label?.toLowerCase().includes('cedula') && input?.typeMethor?.includes('key')){
-      maskCedula(event, input?.formControlName, this.fields)
+        if(index != null) {
+          maskPhoneRD(event, input?.formControlName, this.getFormArray, index);
+          return;
+        }
+          maskPhoneRD(event, input?.formControlName, this.fields);
     }
   }
 

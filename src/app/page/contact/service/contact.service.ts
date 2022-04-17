@@ -28,8 +28,7 @@ export class ContactService {
       ,gender             :['', Validators.required]
       ,email              :['', [Validators.required, EmailValidator]]
       ,status             :['A',  Validators.required]
-      ,cellphone          :['']
-      ,localStorageOrApi  :[true]
+      ,address          :['']
       ,ContactCellPhones            :this.fb.array([this.createFormArray()])
     });
   }
@@ -45,7 +44,7 @@ export class ContactService {
   createFormArray() {
     return this.fb.group({
        cellphoneId          :[0]
-      ,cellPhone            :['',  Validators.required]
+      ,cellphone            :['',  Validators.required]
     });
   }
   //#endregion

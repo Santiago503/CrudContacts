@@ -122,14 +122,15 @@
 
   <!-- Para Array -->
   <div *ngIf="formArrayName" [formGroup]="formGroup" >
-      <div *ngIf="this.control.controls && this.inputGenericDataArray">
+      <div *ngIf="this.control.controls && this.inputGenericDataArray" class="row">
           <div
+            class="col-md-4 col-sm-12"
             [formArrayName]="formArrayName"
             *ngFor="let item of this.control.controls; let ix = index">
             <p *ngIf="subTitleformArrayName">{{subTitleformArrayName}} : {{ix + 1}}</p>
             <div  [className]="classMain"  class="pr rounded-pill" >
-              <div *ngFor="let input of inputGenericDataArray;  let ia = index;" [className]="input?.class" [formGroupName]="ix">
-                  <div>
+              <div *ngFor="let input of inputGenericDataArray;  let ia = index;" [formGroupName]="ix">
+                  <div >
                           <!-- Input normal -->
                       <div *ngIf="input?.typeInput == 'normal'">
                           <label *ngIf="input?.label" class="text-capitalize">{{ input?.label }}</label>
@@ -137,7 +138,7 @@
                       </div>
 
                       <!-- MatInput withOut UpperCase -->
-                      <div   *ngIf="input.typeInput == 'matInput' && input.type != 'select' && input.type != 'ngselectMulti' && input.type != 'radio' && input.type != 'ngselect' && !input?.onlyUpperCase">
+                      <div  class="w-100"  *ngIf="input.typeInput == 'matInput' && input.type != 'select' && input.type != 'ngselectMulti' && input.type != 'radio' && input.type != 'ngselect' && !input?.onlyUpperCase">
                           <mat-form-field [appearance]="input.appearance" class="w-100" >
                               <mat-label *ngIf="input.label" class="text-capitalize">{{ input.label }}</mat-label>
 
@@ -148,7 +149,8 @@
                                   [required]="input.required"
                                   [formControlName]="input.formControlName"
                                   [readonly]="input?.readonly"
-                                  (change)="getChange(input, $event)" >
+                                  (keydown)="getKeydown(input, $event, ix)"
+                                  (change)="getChange(input, $event)">
 
                               <mat-hint align="end" *ngIf="input?.maxLength">
                                   {{field?.value?.length || 0}}/{{ input?.maxLength || 0 }}

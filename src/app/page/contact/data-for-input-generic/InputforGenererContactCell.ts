@@ -10,15 +10,16 @@ export const inputGenericDataContactCell: InputGeneric[] = [
     formControlName:"cellphoneId",
     data : null },
 
-  { label: "CellPhone",
+  { label: "Cellphone",
     class: "col-md-4 col-sm-4",
     appearance: "outline",//Type style Mat or normal
     type: "text",//type input
     typeInput:"matInput",
-    formControlName: "cellPhone",
+    formControlName: "cellphone",
+    typeMethor:'key',
     onlyUpperCase: false, //all word in UpperCase
-    maxLength: 50,
+    maxLength: 12,
     data : null,
-    required: false },
+    required: true },
 
 ];

@@ -56,7 +56,7 @@ export const inputGenericDataContact: InputGeneric[] = [
     appearance: "outline",
     type: "text",
     typeInput:"matInput",
-    formControlName: "cellphone",
+    formControlName: "address",
     typeMethor: 'key',
     onlyUpperCase: false,
     maxLength: 16,

@@ -40,7 +40,7 @@ export class FormControlContactComponent implements OnInit {
   }
 
   setDataInputs() {
-    this.inputGenericData[4].data = [{name: 'Male', id: 'M' }, {name: 'Female', id: 'F' }];
+    this.inputGenericData[3].data = [{name: 'Male', id: 'M' }, {name: 'Female', id: 'F' }];
     this.inputGenericData[6].data = [{name: 'Active', id: 'A' }, {name: 'Inactive', id: 'I' }];
   }
 
