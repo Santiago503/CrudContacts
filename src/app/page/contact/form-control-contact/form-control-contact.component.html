@@ -1,1 +1,54 @@
-<p>form-control-contact works!</p>
+
+    <div class="d-flex flex-column justify-content-between" *ngIf="this.contactServ.FormBuilder">
+      <!-- Title -->
+      <app-title [title]="ContactTitle"></app-title>
+
+      <form  [formGroup]="this.contactServ.FormBuilder" autocomplete="off">
+        <div>
+          <!-- Components Inputs -->
+            <app-control-input-generic
+                [formGroup]="this.contactServ.FormBuilder"
+                [classMain]="'row'"
+                [inputGeneric]="inputGenericData">
+            </app-control-input-generic>
+        </div>
+      </form>
+
+      <div class="btn-group p-0 mt-2" role="group">
+        <button type="button"  matTooltip="Add Address" class="btn btn-primary p-0" (click)="addItem(null)"
+                [disabled]="!matDialogData?.formEnableOrdisable">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <button type="button" class="btn btn-primary p-0" disabled></button>
+
+        <button type="button" matTooltip="Delete Address" class="btn btn-danger  p-0" (click)="deleteItem()"
+                [disabled]="!matDialogData?.formEnableOrdisable">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+
+      <!-- formArrayName -->
+      <form [formGroup]="this.contactServ.FormBuilder" autocomplete="off">
+              <div body>
+                <app-control-input-generic
+                  [formGroup]="contactServ.FormBuilder"
+                  [classMain]="'row'"
+                  [subTitleformArrayName]="'CellPhone '"
+                  [inputGenericDataArray]="inputGenericDataContactCell"
+                  [formArrayName]="'ContactCellPhones'"
+                  [control]="this.contactServ.getCell" >
+                </app-control-input-generic>
+              </div>
+      </form>
+
+      <!-- button save -->
+      <div class="d-flex justify-content-end">
+        <app-button-save
+                [enable]="matDialogData?.formEnableOrdisable"
+                [name]="this.contactServ.FormBuilder.value.id == 0 ? 'Save': 'Edit'"
+                (saveEvent)="save()">
+        </app-button-save>
+      </div>
+
+  </div>

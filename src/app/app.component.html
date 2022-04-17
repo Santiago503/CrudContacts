@@ -1,2 +1,9 @@
-<app-header>
+<add-button (create)="create($event)" [label]="'Create Client'"></add-button>
+
+<app-header (getClient)="Client()">
 </app-header>
+
+<div class="container">
+  <app-index-contact (getClient)="Client()">
+  </app-index-contact>
+</div>
