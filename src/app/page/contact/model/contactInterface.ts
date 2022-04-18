@@ -7,10 +7,10 @@ export interface ContactI {
   ,address            :string
   ,email              :string
   ,status             :string
-  ,ContactCellPhones       :ContactCellPhonesI[]
+  ,ContactCellPhones  :ContactCellPhonesI[]
 }
 
 export interface ContactCellPhonesI {
-   cellphoneId            :any | number
+   cellphoneId          :any | number
   ,cellphone            :string
 }

@@ -1,0 +1,53 @@
+[
+  {
+    "id"                  :"A12345"
+    ,"name"               :"Santiago"
+    ,"lastname"           :"Encarnacion Smith"
+    ,"gender"             :"M"
+    ,"email"              :"santiago.503.es@gmail.com"
+    ,"status"             :"A"
+    ,"address"            : "La Romana"
+    ,"ContactCellPhones"       :[{
+      "cellphoneId"          :"A12345"
+      ,"cellphone"           :"809-803-3835"
+    },
+    {
+      "cellphoneId"          :"A12345"
+      ,"cellphone"           :"809-803-3837"
+    }]
+  },
+  {
+    "id"                  :"A12341"
+    ,"name"               :"Francisco"
+    ,"lastname"           :"Encarnacion Smith"
+    ,"gender"             :"M"
+    ,"email"              :"francisco.503.es@gmail.com"
+    ,"status"             :"A"
+    ,"address"            : "Higuey"
+    ,"ContactCellPhones"       :[{
+      "cellphoneId"          :"A12341"
+      ,"cellphone"           :"809-803-3835"
+    },
+    {
+      "cellphoneId"          :"A12341"
+      ,"cellphone"           :"809-055-9552"
+    }]
+  },
+  {
+    "id"                 :"A12342"
+    ,"name"               :"Luisa"
+    ,"lastname"           :"Mejía"
+    ,"gender"             :"F"
+    ,"email"              :"Luisa@gmail.com"
+    ,"status"             :"I"
+    ,"address"            : "STD"
+    ,"ContactCellPhones"       :[{
+      "cellphoneId"          :"A12342"
+      ,"cellphone"           :"809-665-8152"
+    },
+    {
+      "cellphoneId"          :"A12342"
+      ,"cellphone"           :"809-055-9552"
+    }]
+  }
+]

@@ -1,0 +1,13 @@
+
+  <prx-table-material
+    [listData]="this.contactServ.ListContact"
+    [displayedColumns]="column"
+    [title]="'List of Contacts'"
+    [seeAction]="true"
+    [canDelete]="true"
+    [canEdit]="true"
+    [canSee]="true"
+    [loading]="contactServ.loading"
+    (onDelet)="onDelete($event)"
+    (onUpdateSee)="onUpdate($event)">
+  </prx-table-material>

@@ -9,6 +9,7 @@ import { FormControlContactComponent } from './page/contact/form-control-contact
 import { IndexContactComponent } from './page/contact/index-contact/index-contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     MaterialModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

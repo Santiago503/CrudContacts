@@ -61,10 +61,11 @@ export class FormControlContactComponent implements OnInit {
 
 
   addItem(Cell:any) {
-    this.contactServ.getCell.push(this.contactServ.createFormArray());
+    this.contactServ.getCell.push(this.contactServ.createFormArray(Cell || this.contactServ.StructuredInitCellPhone));
   }
 
   deleteItem() {
+
     if(this.contactServ.getCell.length > 1){
       this.contactServ.getCell.removeAt(this.contactServ.getCell.length -1);
     }
@@ -92,7 +93,6 @@ export class FormControlContactComponent implements OnInit {
 
     if(resp) {
       this.alert.swalBasic('Good Job!','Saved Successfully','success');
-      this.contactServ.ListContact = this.contactServ.Contacts;
       this.dialogServ.dialogClose();
     }
   }

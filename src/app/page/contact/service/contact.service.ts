@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { EmailValidator, NameValidator } from 'src/app/helper/validate';
 import { LocalstorageService } from 'src/app/service/localstorage/localstorage.service';
 import { uid } from 'uid';
@@ -12,8 +13,7 @@ export class ContactService {
   public ListContact = [];
   public loading = false;
   FormBuilder: any;
-  Listcontact: any;
-  contacts: any;
+  dataInitial: boolean = false;
 
   constructor( private fb: FormBuilder,
                private localStorageServ: LocalstorageService) { }
@@ -28,9 +28,13 @@ export class ContactService {
       ,gender             :['', Validators.required]
       ,email              :['', [Validators.required, EmailValidator]]
       ,status             :['A',  Validators.required]
-      ,address          :['']
-      ,ContactCellPhones            :this.fb.array([this.createFormArray()])
+      ,address            :['']
+      ,ContactCellPhones  :this.fb.array([this.createFormArray()])
     });
+  }
+
+  get StructuredInitCellPhone() {
+    return {cellphoneId: 0, cellphone : ''};
   }
 
   get getCell() {
@@ -38,13 +42,17 @@ export class ContactService {
   }
 
   get Contacts() {
-    return this.localStorageServ.getItem(this.keyContact);
+    let localStorage = this.localStorageServ.getItem(this.keyContact);
+
+    return localStorage;
   }
 
-  createFormArray() {
+
+
+  createFormArray(data: ContactCellPhonesI = this.StructuredInitCellPhone) {
     return this.fb.group({
-       cellphoneId          :[0]
-      ,cellphone            :['',  Validators.required]
+       cellphoneId          :[data.cellphoneId || 0]
+      ,cellphone            :[data.cellphone ||'',  Validators.required]
     });
   }
   //#endregion

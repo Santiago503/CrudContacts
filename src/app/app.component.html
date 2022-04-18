@@ -1,9 +1,9 @@
-<add-button (create)="create($event)" [label]="'Create Client'"></add-button>
+<add-button (create)="create($event)" [label]="'Create new Contact'"></add-button>
 
-<app-header (getClient)="Client()">
+<app-header>
 </app-header>
 
 <div class="container">
-  <app-index-contact (getClient)="Client()">
+  <app-index-contact (getContact)="getListContact()">
   </app-index-contact>
 </div>
